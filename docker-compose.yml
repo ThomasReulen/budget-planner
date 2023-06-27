@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  bplan-frontend:    
+    container_name: bplan-frontend
+    image: thomasreulen/bplan-frontend:latest    
+    working_dir: /home/node/app
+    build: 
+      context: ./frontend
+      dockerfile: ./container/Dockerfile
+    environment:
+      - NODE_ENV=devleopment
+    volumes:
+      - ./frontend/assets:/assets
+      - ./frontend/project:/home/node/app/
+      - nodemods:/home/node/app/node_modules:rw
+    restart: always
+    command: [ "sleep", "16000" ]
+    ports:
+      - 3000:3000
+
+  bplan-web:
+    container_name: bplan-web
+    image: nginx:1.24 
+    volumes: 
+      - ./frontend/project/www:/usr/share/nginx/html:ro
+    ports:
+      - 80:80
+      
+volumes:
+  nodemods:
