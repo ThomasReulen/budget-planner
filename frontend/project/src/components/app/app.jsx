@@ -1,6 +1,6 @@
 import './app.scss';
-import { NavBar } from './nav';
-import * as adminlte from 'adminlte';
+// import { NavBar } from './nav';
+// import * as adminlte from 'adminlte';
 
 export function App() {    
 

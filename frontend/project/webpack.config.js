@@ -37,6 +37,10 @@ module.exports = {
   },
   module: {
     rules: [
+        {
+           test: /\.(html)$/,
+           use: ['html-loader']
+        },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -45,12 +49,15 @@ module.exports = {
       {
         test: /\.(scss)$/i,
         use: [ {
+            // Adds CSS to the DOM by injecting a `<style>` tag
             loader: 'style-loader'
           },
           { 
+            // Interprets `@import` and `url()` like `import/require()` and will resolve them
             loader: 'css-loader' 
           },
           {
+            // Loader for webpack to process CSS with PostCSS
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
@@ -77,6 +84,9 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+        "@adminlte": path.resolve(__dirname,"node_modules/admin-lte/")
+    },
     extensions: ['*', '.js', '.jsx'],
   },
 };

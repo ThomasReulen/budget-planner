@@ -2,6 +2,7 @@ version: '3'
 services:
 
   bplan-frontend:    
+    privileged: true
     container_name: bplan-frontend
     image: thomasreulen/bplan-frontend:latest    
     working_dir: /home/node/app

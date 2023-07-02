@@ -8,4 +8,4 @@ RUN chown node:node /home/node/app/node_modules
 ENV NODE_ENV=development
 
 USER node 
-#RUN npm install
+#RUN npm install    
