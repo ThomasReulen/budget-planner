@@ -28,5 +28,13 @@ services:
     ports:
       - 80:80
       
+  adinlte-web:
+    container_name: adminlte-web
+    image: nginx:1.24 
+    volumes: 
+      - ./frontend/assets/AdminLTE-3.2.0/:/usr/share/nginx/html:ro
+    ports:
+      - 81:80
+
 volumes:
   nodemods:

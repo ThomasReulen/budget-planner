@@ -1,10 +1,11 @@
-import './app.scss';
-// import { NavBar } from './nav';
-// import * as adminlte from 'adminlte';
+
+import { NavBar } from './nav';
+import { SideBar } from './sidebar';
 
 export function App() {    
 
-     return <div className="wrapper">
-            <NavBar />        
-        </div>;
+     return <>
+                <NavBar></NavBar>
+                <SideBar></SideBar>
+            </>;
 }
