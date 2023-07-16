@@ -24,7 +24,7 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
 
-import { StrictMode } from "react";
+import { React, StrictMode, Component, Fragment } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from './components/app/app';
 

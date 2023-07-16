@@ -1,6 +1,8 @@
 
 import ThemeImg1 from '/assets/AdminLTE-3.2.0/dist/img/AdminLTELogo.png';
 import ThemeImg2 from '/assets/AdminLTE-3.2.0/dist/img/user2-160x160.jpg';
+import { Link } from "react-router-dom";
+
 
 export function SideBar() {    
 
@@ -8,7 +10,7 @@ export function SideBar() {
       
       <a href="index3.html" className="brand-link">
         <img src={ ThemeImg1 } alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{opacity: .8}}/>
-        <span className="brand-text font-weight-light">AdminLTE 3</span>
+        <span className="brand-text font-weight-light">Budget Planner</span>
       </a>
   
       
@@ -40,37 +42,105 @@ export function SideBar() {
           <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             
             <li className="nav-item menu-open">
-              <a href="#" className="nav-link active">
+              <a href="#" className="nav-link">
                 <i className="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Starter Pages
+                  Transactions
                   <i className="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <a href="#" className="nav-link active">
+                  <Link to="/transactions/overview" className="nav-link">
+                  {/* <a href="#" className="nav-link active"> */}
                     <i className="far fa-circle nav-icon"></i>
-                    <p>Active Page</p>
+                    <p>Overview</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/transactions/import" className="nav-link">
+                  {/* <a href="#" className="nav-link active"> */}
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Import</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/transactions/editor" className="nav-link">
+                  {/* <a href="#" className="nav-link active"> */}
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Editor</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/transactions/categories" className="nav-link">
+                  {/* <a href="#" className="nav-link active"> */}
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Categories</p>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            <li className="nav-item menu-open">
+              <a href="#" className="nav-link active">
+                <i className="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Accounts
+                  <i className="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Overview</p>
                   </a>
                 </li>
                 <li className="nav-item">
                   <a href="#" className="nav-link">
                     <i className="far fa-circle nav-icon"></i>
-                    <p>Inactive Page</p>
+                    <p>Virtual Accounts</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Bank Accounts</p>
                   </a>
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
+
+            <li className="nav-item menu-open">
               <a href="#" className="nav-link">
-                <i className="nav-icon fas fa-th"></i>
+                <i className="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Simple Link
-                  <span className="right badge badge-danger">New</span>
+                  Budget Planner
+                  <i className="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Planner</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Statistics</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Budget Templates</p>
+                  </a>
+                </li>
+              </ul>
             </li>
+
           </ul>
         </nav>
         
