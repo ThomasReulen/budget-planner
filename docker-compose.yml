@@ -36,5 +36,40 @@ services:
     ports:
       - 81:80
 
+  swagger:
+    container_name: swagger
+    image: swaggerapi/swagger-ui
+    environment: 
+      - SWAGGER_JSON=/apispec/v1.yml
+    volumes: 
+      - ./swagger:/apispec
+    ports:
+      - "88:8080"
+
+  petstore:
+    container_name: petstore
+    image: swaggerapi/swagger-ui
+    environment: 
+      - SWAGGER_JSON=/apispec/petstore.yml
+    volumes: 
+      - ./swagger:/apispec
+    ports:
+      - "89:8080"
+
+  api: 
+    container_name: bplanner-api 
+    image: thomasreulen/bplan-api:latest  
+    build: 
+      context: ./api
+      dockerfile: ./src/Dockerfile
+    volumes:
+      - ./api:/home/tom/api
+    environment: 
+      - DB_HOST=127.0.0.1
+      - DB_PORT=1234
+    ports: 
+      - "8080:8080"
+    command: [ "sleep", "16000" ]
+      
 volumes:
   nodemods:
