@@ -12,7 +12,6 @@ services:
     environment:
       - NODE_ENV=devleopment
     volumes:
-      - ./frontend/assets:/assets
       - ./frontend/project:/home/node/app/
       - nodemods:/home/node/app/node_modules:rw
     restart: always
@@ -27,12 +26,13 @@ services:
       - ./frontend/project/www:/usr/share/nginx/html:ro
     ports:
       - 80:80
-      
+  
+  # http://127.0.0.1:81/nodemods/admin-lte/index.html
   adinlte-web:
     container_name: adminlte-web
     image: nginx:1.24 
     volumes: 
-      - ./frontend/assets/AdminLTE-3.2.0/:/usr/share/nginx/html:ro
+      - nodemods:/usr/share/nginx/html/nodemods:ro
     ports:
       - 81:80
 
