@@ -1,50 +1,57 @@
 swagger: "2.0"
 info:
-  description: "This is the API spec for eskalope"
+  description: "This is the API spec for budget-planner"
   version: "1.0.0"
-  title: "Eskalope Swagger API"
+  title: "Budget Planner API"
   termsOfService: ""
   contact:
-    email: "team@eskalope.de"
+    email: "team@bplanner.de"
   license:
     name: "Commercial"
-host: "localhost:8080"
+host: "localhost:88"
 basePath: "/v1"
 tags:
-- name: "quests"
-  description: "Eskalope Quests"
+- name: "Transaction"
+  description: "Transactions"
+- name: "Tags"
+  description: "Tags .. ya know"
 schemes:
-- "https"
 - "http"
 paths:
-  /quest/:
+  /transactions/:
     get:
       tags:
-      - "quests"
-      summary: "Finds newest quests"
-      description: "sorted by date"
-      operationId: "findQuestByCreadate"
+      - "Transaction"
+      summary: "Get transactions for current month by default"
+      description: "sorted by date descending"
+      operationId: "getTransactions"
       produces:
       - "application/json"
+      parameters:
+      - name: "account"
+        in: "query"
+        description: "Search string for account"
+        required: false
+        type: "string"
       responses:
         "200":
           description: "successful operation"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Quests"
+              $ref: "#/definitions/Transaction"
         "400":
           description: "Invalid status value"
       security:
-      - queststore_auth:
-        - "write:quests"
-        - "read:quests"
+      - bplanner:
+        - "write:transactions"
+        - "read:transactions"
     post:
       tags:
-      - "quest"
-      summary: "Add a new quest"
-      description: "Inserts new quest into database"
-      operationId: "addQuest"
+      - "Transaction"
+      summary: "Add a new transactions"
+      description: "Inserts new transactions into database"
+      operationId: "addTransaction"
       consumes:
       - "application/json"
       produces:
@@ -52,78 +59,24 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Quest object that needs to be added to the store"
+        description: "transactions object that needs to be added to the store"
         required: true
         schema:
-          $ref: "#/definitions/Quest"
+          $ref: "#/definitions/Transaction"
       responses:
         "405":
           description: "Invalid input"
       security:
-      - queststore_auth:
-        - "write:quests"
-        - "read:quests"
-  /quest/findByName:
-    get:
-      tags:
-      - "quest"
-      summary: "Finds quest by name"
-      description: "Provide search string"
-      operationId: "findQuestByName"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "questname"
-        in: "query"
-        description: "Search string for name"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Quests"
-        "400":
-          description: "Invalid status value"
-      security:
-      - queststore_auth:
-        - "write:quests"
-        - "read:quests"
-  /quest/{questId}:
-    get:
-      tags:
-      - "quest"
-      summary: "Find quest by ID"
-      description: "Returns a single quest"
-      operationId: "getQuestById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "questId"
-        in: "path"
-        description: "ID of quest to return"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        "200":
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Quest"
-        "400":
-          description: "Invalid ID supplied"
-        "404":
-          description: "Quest not found"
-      security:
-      - api_key: []
+      - bplanner:
+        - "write:transactions"
+        - "read:transactions"
+  /transactions/{id}:
     put:
       tags:
-      - "quest"
-      summary: "Update an existing quest"
+      - "Transaction"
+      summary: "Update an existing transaction"
       description: ""
-      operationId: "updateQuest"
+      operationId: "updateTransaction"
       consumes:
       - "application/json"
       produces:
@@ -131,69 +84,164 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Quest object that needs to be added to the store"
+        description: "Transaction that needs to be added to the store"
         required: true
         schema:
-          $ref: "#/definitions/Quest"
+          $ref: "#/definitions/Transaction"
       responses:
         "400":
           description: "Invalid ID supplied"
         "404":
-          description: "Quest not found"
+          description: "Transaction not found"
         "405":
           description: "Validation exception"
       security:
-      - queststore_auth:
-        - "write:quests"
-        - "read:quests" 
-    delete:
+      - bplanner:
+        - "write:transaction"
+        - "read:transaction" 
+  /tags/:
+    get:
       tags:
-      - "quest"
-      summary: "Delete a quest"
-      description: ""
-      operationId: "deleteQuest"
+      - "Tags"
+      summary: "Get tasg"
+      description: "sorted by name"
+      operationId: "getTags"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            items:
+              $ref: "#/definitions/TagList"
+        "400":
+          description: "Invalid status value"
+      security:
+      - bplanner:
+        - "write:tags"
+        - "read:tags"
+    post:
+      tags:
+      - "Tags"
+      summary: "Add a new tag"
+      description: "Inserts new tag into database"
+      operationId: "addTag"
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
-      - name: "api_key"
-        in: "header"
-        required: false
-        type: "string"
-      - name: "questId"
-        in: "path"
-        description: "quest id to delete"
+      - in: "body"
+        name: "body"
+        description: "tag object that needs to be added to the store"
         required: true
-        type: "integer"
-        format: "int64"
+        schema:
+          $ref: "#/definitions/Tag"
+      responses:
+        "405":
+          description: "Invalid input"
+      security:
+      - bplanner:
+        - "write:tags"
+        - "read:tags"
+  /tags/{id}:
+    put:
+      tags:
+      - "Tags"
+      summary: "Update an existing tag"
+      description: ""
+      operationId: "updateTag"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Transaction that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Tag"
       responses:
         "400":
           description: "Invalid ID supplied"
         "404":
-          description: "quest not found"
+          description: "Transaction not found"
+        "405":
+          description: "Validation exception"
       security:
-      - queststore_auth:
-        - "write:quests"
-        - "read:quests"
+      - bplanner:
+        - "write:tags"
+        - "read:tags" 
 securityDefinitions:
-  queststore_auth:
+  bplanner_auth:
     type: "oauth2"
     authorizationUrl: "http://localhost/oauth/dialog"
     flow: "implicit"
     scopes:
-      write:quests: "modify quests in your account"
-      read:quests: "read your quests"
+      write:transactions: "modify transactions in your account"
+      read:transactions: "read your transactions"
   api_key:
     type: "apiKey"
     name: "api_key"
     in: "header"
 definitions:
-  Quest:
+  TransactionsByMonth:
+    type: "object"
+    properties:
+      name: 
+        type: "string"
+      tansactions:
+        $ref: "#/definitions/TransactionList"        
+  TransactionList:
+    type: "array"
+    items:
+      $ref: "#/definitions/Transaction"
+  Transaction:
     type: "object"
     required:
+    - "id"
+    - "date"
+    - "value"
     - "name"
     properties:
       id:
         type: "integer"
         format: "int64"
+      date: 
+        type: "string" 
+      value: 
+        type: "string" 
+      type: 
+        type: "string" 
       name: 
+        type: "string" 
+      description: 
+        type: "string" 
+      ref: 
+        type: "string" 
+      booked: 
+        type: "string" 
+      valuta: 
+        type: "string"      
+  TagList:
+    type: "array"
+    items:
+      $ref: "#/definitions/Tag"
+  Tag:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "color"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name: 
+        type: "string" 
+      description: 
+        type: "string" 
+      color: 
         type: "string" 
