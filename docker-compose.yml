@@ -33,6 +33,7 @@ services:
     image: nginx:1.24 
     volumes: 
       - nodemods:/usr/share/nginx/html/nodemods:ro
+      - ./frontend/project/static/:/usr/share/nginx/html/static:ro
     ports:
       - 81:80
 

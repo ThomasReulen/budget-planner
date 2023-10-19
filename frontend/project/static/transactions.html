@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Budget Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="static.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="/nodemods/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/nodemods/admin-lte/plugins/summernote/summernote-bs4.min.css">
+
+
+    <link rel="stylesheet" href="static.css" />
+</head>
+
+<body>
+    <div id="root" class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                    aria-label="Search" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+
+                            <div class="media">
+                                <img src="/nodemods/admin-lte/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+
+                            <div class="media">
+                                <img src="/nodemods/admin-lte/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+
+                            <div class="media">
+                                <img src="/nodemods/admin-lte/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i
+                                                class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+            <a href="index3.html" class="brand-link">
+                <img src="/nodemods/admin-lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity:0.8" />
+                <span class="brand-text font-weight-light">Budget Planner</span>
+            </a>
+
+            <div class="sidebar">
+
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="/nodemods/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                            alt="User Image" />
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Tom Reulen</a>
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search" />
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Transactions
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="index.html" class="nav-link" >
+                                    
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Overview</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="transactions.html" class="nav-link">
+          
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Transactions</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="tags.html" class="nav-link" >
+                                    
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Tags</p>
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Accounts
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Overview</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Virtual Accounts</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bank Accounts</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Budget Planner
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Planner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Statistics</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Budget Templates</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Transactions</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Transactions</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <h3 class="card-title">Pagination Month</h3>
+                            </div>
+                            <div class="card-body">
+                              <ul class="pagination pagination-month justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Jan</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Feb</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Mar</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Apr</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">May</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Jun</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Jul</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Aug</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Sep</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Oct</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Nov</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <p class="page-month">Dec</p>
+                                        <p class="page-year">2021</p>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="card">
+                                <div class="card-header">
+                                  <h3 class="card-title">Oktober 2023</h3>
+                  
+                                  <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                  
+                                      <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                          <i class="fas fa-search"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                  <table class="table table-hover text-nowrap">
+                                    <thead>
+                                      <tr>
+                                        <th>Konto</th>
+                                        <th>Datum</th>
+                                        <th>Betrag</th>
+                                        <th>Name</th>
+                                        <th>Text</th>
+                                        <th>Tags</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Giro</td>
+                                        <td>14.10.2023</td>
+                                        <td class="text-danger">40,00 €</td>
+                                        <td>Muenchen Ibis Hotel</td>
+                                        <td>MUENCHEN IBIS HOTEL
+                                            MUENCHEN
+                                            KARTE 2181
+                                            11102023
+                                            KDN-REF 000000254875</td>
+                                        <td>
+                                            <span class="badge bg-secondary">Hotel</span>
+                                            <span class="badge bg-info">Expense</span>                                            
+                                        </td>
+                                      </tr>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Giro</td>
+                                        <td>17.10.2023</td>
+                                        <td class="text-danger">5,60 €</td>
+                                        <td>PayPal Europe S.a.r.l. et Cie S.C.A</td>
+                                        <td>1029999559368 PP.3035.PP . Lotto24
+                                            AG, Ihr Einkauf bei Lotto24 AG</td>
+                                        <td>                                            
+                                            <span class="badge bg-maroon">Luxury</span>
+                                        </td>
+                                      </tr>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Giro</td>
+                                        <td>13.10.2023</td>
+                                        <td class="text-danger">63,00 €</td>
+                                        <td>CAMBIA THAI</td>
+                                        <td>CAMBIA THAI
+                                            NEUTRAUBLING
+                                            KARTE 2181
+                                            11102023
+                                            KDN-REF 000000854315</td>
+                                        <td> 
+                                            <span class="badge bg-warning">Essen</span>
+                                        </td>
+                                      </tr>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Giro</td>
+                                        <td>10.10.2023</td>
+                                        <td class="text-success">562,00 €</td>
+                                        <td>
+                                            AMAZON WEB SERVICES EMEA SARL, NIE</td>
+                                        <td>
+                                            FCS001833298992 PAYMENT-NUM 2 7697
+                                            3181</td>
+                                        <td>                                           
+ 
+                                            <span class="badge bg-success">Income</span>
+                                        </td>
+                                      </tr>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Visa</td>
+                                        <td>10.10.2023</td>
+                                        <td class="text-danger">133,60 €</td>
+                                        <td>LINUXFOUNDATION HTTPSWWW.LIN400</td>
+                                        <td>
+                                            LINUXFOUNDATION HTTPSWWW.LIN400
+                                            Betrag: -595,00 USD
+                                            Kurs: 1,0499</td>
+                                        <td>
+                                             
+                                            <span class="badge bg-info">Expense</span>
+                                        </td>
+                                      </tr>
+                                      <tr data-toggle="modal" data-target="#modal-lg">
+                                        <td>Giro</td>
+                                        <td>10.10.2023</td>
+                                        <td class="text-danger">585,81 €</td>
+                                        <td>XXXLUTZ REGENSBURG</td>
+                                        <td>XXXLUTZ REGENSBURG
+                                            REGENSBURG
+                                            KARTE 2181
+                                            06102023
+                                            KDN-REF 000000495955</td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  
+
+                                </div>
+                                <!-- /.card-body -->
+                              </div>
+                              <!-- /.card -->                            
+
+
+
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.container-fluid -->
+
+                <div class="modal fade" id="modal-lg">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Edit Transaction</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                            
+                  <form>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Text</label>
+                          <input type="text" class="form-control" placeholder="Enter ...">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Text Disabled</label>
+                          <input type="text" class="form-control" placeholder="Enter ..." disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- textarea -->
+                        <div class="form-group">
+                          <label>Textarea</label>
+                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Textarea Disabled</label>
+                          <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <!-- input states -->
+                    <div class="form-group">
+                      <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> Input with
+                        success</label>
+                      <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Input with
+                        warning</label>
+                      <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> Input with
+                        error</label>
+                      <input type="text" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- checkbox -->
+                        <div class="form-group">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Checkbox</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">Checkbox checked</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" disabled>
+                            <label class="form-check-label">Checkbox disabled</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <!-- radio -->
+                        <div class="form-group">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radio1">
+                            <label class="form-check-label">Radio</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radio1" checked>
+                            <label class="form-check-label">Radio checked</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" disabled>
+                            <label class="form-check-label">Radio disabled</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- select -->
+                        <div class="form-group">
+                          <label>Select</label>
+                          <select class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Select Disabled</label>
+                          <select class="form-control" disabled>
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- Select multiple-->
+                        <div class="form-group">
+                          <label>Select Multiple</label>
+                          <select multiple class="form-control">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>Select Multiple Disabled</label>
+                          <select multiple class="form-control" disabled>
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+
+
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="/nodemods/admin-lte/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/nodemods/admin-lte/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/nodemods/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- ChartJS -->
+    <!-- <script src="/nodemods/admin-lte/plugins/chart.js/Chart.min.js"></script> -->
+
+    <!-- Sparkline -->
+    <!-- <script src="/nodemods/admin-lte/plugins/sparklines/sparkline.js"></script> -->
+
+    <!-- JQVMap -->
+    <!-- <script src="/nodemods/admin-lte/plugins/jqvmap/jquery.vmap.min.js"></script> -->
+    <!-- <script src="/nodemods/admin-lte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+
+    <!-- jQuery Knob Chart -->
+    <!-- <script src="/nodemods/admin-lte/plugins/jquery-knob/jquery.knob.min.js"></script> -->
+
+    <!-- daterangepicker -->
+    <!-- <script src="/nodemods/admin-lte/plugins/moment/moment.min.js"></script> -->
+    <!-- <script src="/nodemods/admin-lte/plugins/daterangepicker/daterangepicker.js"></script> -->
+
+    <!-- Tempusdominus Bootstrap 4 -->
+    <!-- <script src="/nodemods/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
+
+    <!-- Summernote -->
+    <!-- <script src="/nodemods/admin-lte/plugins/summernote/summernote-bs4.min.js"></script> -->
+
+    <!-- overlayScrollbars -->
+    <!-- <script src="/nodemods/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+
+    <!-- AdminLTE App -->
+    <script src="/nodemods/admin-lte/dist/js/adminlte.js"></script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
