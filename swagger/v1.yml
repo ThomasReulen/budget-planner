@@ -8,7 +8,7 @@ info:
     email: "team@bplanner.de"
   license:
     name: "Commercial"
-host: "localhost:88"
+host: "localhost:8080"
 basePath: "/v1"
 tags:
 - name: "Transaction"
@@ -63,6 +63,30 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/Transaction"
+      responses:
+        "405":
+          description: "Invalid input"
+      security:
+      - bplanner:
+        - "write:transactions"
+        - "read:transactions"
+  /transactions/csv/:
+    post:
+      tags:
+      - "Transaction"
+      summary: "Add a new transactions"
+      description: "Inserts new transactions into database"
+      operationId: "uploadTransCsv"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "text"      
+      parameters:
+      - in: "formData"
+        name: "transfile"
+        description: "file for csv upload"
+        required: true
+        type: file
       responses:
         "405":
           description: "Invalid input"
